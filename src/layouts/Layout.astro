@@ -1,6 +1,14 @@
 ---
 import '@styles/main.css'
 
+interface Props {
+    title: string,
+    description: string
+}
+
+
+const { title, description } = Astro.props;
+
 ---
 
 <html lang="en">
@@ -9,7 +17,8 @@ import '@styles/main.css'
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Axel Schnürer - Portfolio</title>
+		<title>{title} - Axel Schnürer</title>
+        <meta name="description" content={description}>
 	</head>
 	<body class="margin-0">
 		<slot></slot>

@@ -1,5 +1,7 @@
 ---
 import '@styles/main.css'
+import { ViewTransitions } from 'astro:transitions';
+
 
 interface Props {
     title: string,
@@ -11,7 +13,7 @@ const { title, description } = Astro.props;
 
 ---
 
-<html lang="en">
+<html lang="en" transition:animate="slide">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -19,9 +21,10 @@ const { title, description } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} - Axel Schnürer</title>
         <meta name="description" content={description}>
+        <ViewTransitions />
 	</head>
 	<body class="margin-0">
-        <header>
+        <header transition:animate="none">
             <nav class="padding-50 flex align-items-center justify-content-center gap-100">
                 <a href="/">Home</a>
                 <a href="/dev">Dev stuff</a>

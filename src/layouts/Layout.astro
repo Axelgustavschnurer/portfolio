@@ -22,7 +22,7 @@ const { title, description } = Astro.props;
         <meta name="description" content={description}>
 	    <ViewTransitions />
     </head>
-	<body class="margin-0">
+	<body class="margin-0" transition:animate="none">
         <header>
             <nav class="padding-50 flex align-items-center justify-content-center gap-100">
                 <a href="/">Home</a>

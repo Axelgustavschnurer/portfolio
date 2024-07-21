@@ -1,0 +1,52 @@
+---
+    import Layout from "@layouts/Layout.astro";
+    import { pbFetch } from '@functions';
+
+    const { blogpost } = Astro.params;
+
+    export async function getStaticPaths() {
+        
+        let data: Array<any> = await pbFetch({
+            collection: "blog",
+            sort: 'date'
+        });
+
+        let params: Array<{
+            params: {
+                blogpost: string;
+            };
+        }> = [];
+        
+        data.forEach((element: any) => {
+            params.push({
+                params: { blogpost: element.id }
+            });
+        });
+     
+        return params;
+    
+    }
+
+    let post: any = await pbFetch({
+        collection: "blog",
+        id: blogpost
+    });
+
+---
+
+<Layout 
+    title={post.title}
+    description={post.title}
+>
+    <container-text class="margin-inline-auto margin-block-300" >
+        <a href="/blog">◀ Tillbaka </a>
+        <article class="margin-block-100">
+            <div style="height: 256px">
+                <img transition:name={`blogpost-image-${post.id}`} src={`https://schnurer.pockethost.io/api/files/${post.collectionId}/${post.id}/${post.image}`} alt="" style="height: 100%; width: 100%; object-fit: fill; border-radius: .5rem;" />
+            </div>
+            <h2 class="margin-bottom-0">{post.title}</h2>                        
+            <time datetime={post.date}>{post.date}</time> • <cite>{post.author}</cite>        
+            <div set:html={post.content}></div>
+        </article>
+    </container-text>
+</Layout>

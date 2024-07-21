@@ -1,13 +1,30 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { pbFetch } from "@functions";
 
+const blog_posts = await pbFetch({
+    collection: "blog",
+    sort: "date"
+});
 ---
 
 <Layout 
-	title="Ecology"
+	title="Blog"
 	description="Här bloggar jag"
 >
-	<h1>Axel Schnürer</h1>
-    <h2>Blog</h2>
-	<p>Portfolio currently under construction. Please check back later</p>
+    <container-text class="margin-inline-auto">
+        <h1>Blog</h1>
+        {blog_posts.map((post: any) =>
+            <a href={`/blog/${post.id}`} class="block margin-block-100">
+                <article class="grid gap-100 align-items-center" style="grid-template-columns: 128px 1fr;">
+                    <img transition:name={`blogpost-image-${post.id}`} transition:animate="slide" src={`https://schnurer.pockethost.io/api/files/${post.collectionId}/${post.id}/${post.image}`} alt="" width="128" height="128" style="border-radius: .5rem;" />
+                    <div>
+                        <h2 class="margin-block-0">{post.title}</h2>                        
+                        <time datetime={post.date}>{post.date}</time> • <cite>{post.author}</cite>
+                    </div>
+                </article>
+            </a>
+        )}
+    </container-text>
+
 </Layout>

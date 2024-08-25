@@ -21,8 +21,8 @@ const { title, description } = Astro.props;
         <meta name="description" content={description}>
     </head>
 	<body class="margin-0">
-        <container class="margin-inline-auto margin-50">
-            <header class="padding-100">
+        <header class="margin-50">
+            <container class="margin-inline-auto padding-100">
                 <flex class="align-items-center justify-content-space-between">
                     <img src="/icons/dog.svg" alt="" />
                     <nav class="flex align-items-center gap-100">
@@ -30,18 +30,14 @@ const { title, description } = Astro.props;
                         <a href="/blog">Blog</a>
                     </nav>
                 </flex>
-            </header>
-        </container>
+            </container>
+        </header>
         <slot></slot>
 	</body>
 </html>
 
 <style>
-    container:has(header) {
-        backdrop-filter: blur(1px);
-        border-radius: .25rem;
-        background-color: rgba(102,168,122, .5);
-        box-shadow: 0 0 .5rem -.25rem rgba(102,168,122);
+    header {
         position: sticky;
         top: .5rem;
     }
@@ -52,8 +48,11 @@ const { title, description } = Astro.props;
         text-decoration: none
     }
 
-    nav {
-        position: relative;
+    header > container {
+        backdrop-filter: blur(1px);
+        border-radius: .25rem;
+        background-color: rgba(102,168,122, .5);
+        box-shadow: 0 0 .5rem -.25rem rgba(102,168,122);
     }
 
 </style>

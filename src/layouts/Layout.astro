@@ -21,27 +21,23 @@ const { title, description } = Astro.props;
         <meta name="description" content={description}>
     </head>
 	<body class="margin-0">
-        <header class="padding-100 margin-50">
-            <container class="margin-inline-auto">
+        <container class="margin-inline-auto margin-50">
+            <header class="padding-100">
                 <flex class="align-items-center justify-content-space-between">
                     <img src="/icons/dog.svg" alt="" />
-                    <nav class="flex align-items-center justify-content-flex-end gap-100">
+                    <nav class="flex align-items-center gap-100">
                         <a href="/">Home</a>
-                        {/*
-                            <a href="/dev">Dev stuff</a>
-                            <a href="/ecology">Ecology stuff</a>
-                        */}
                         <a href="/blog">Blog</a>
                     </nav>
                 </flex>
-            </container>
-        </header>
+            </header>
+        </container>
         <slot></slot>
 	</body>
 </html>
 
 <style>
-    header {
+    container:has(header) {
         backdrop-filter: blur(1px);
         border-radius: .25rem;
         background-color: rgba(102,168,122, .5);

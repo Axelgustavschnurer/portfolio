@@ -1,5 +1,9 @@
 /* TODO: Figure out specificity (User :where() psuedo element? See input[type="file"]) */
 
+body {
+  background-color: #e0e6eb;
+}
+
 img {
   max-width: 100%;
 }

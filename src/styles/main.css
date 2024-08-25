@@ -1,4 +1,9 @@
 /* TODO: Figure out specificity (User :where() psuedo element? See input[type="file"]) */
+
+img {
+  max-width: 100%;
+}
+
 /* CSS reset */
 * {
   box-sizing: border-box;

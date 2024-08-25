@@ -1,5 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+import background from '../images/background.jpg'
 
 ---
 
@@ -7,8 +9,24 @@ import Layout from "@layouts/Layout.astro";
 	title="Home"
 	description="Välkommen till min portfolio"
 >
+	<div class="padding-50" style="position: absolute; left: 0; top: 0; z-index: -1; width: 100%;">
+		<Image src={background} width={5120} height={775} alt='' />
+	</div>
 	<container-text class="margin-inline-auto">
 		<h1>Axel Schnürer</h1>
 		<p>Portfolio currently under construction. Please check back later</p>
 	</container-text>
+	<div style="height: 200vh;"></div>
 </Layout>
+
+<style>
+	img { 
+
+		border-radius: .5rem;
+		height: 775px;
+		max-height: 90dvh;
+		width: 100%;
+		object-fit: cover;
+		object-position: 90% 25%;
+	}
+</style>

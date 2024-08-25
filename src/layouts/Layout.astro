@@ -1,6 +1,5 @@
 ---
 import '@styles/main.css'
-import { ViewTransitions } from "astro:transitions";
 
 interface Props {
     title: string,
@@ -20,12 +19,11 @@ const { title, description } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} - Axel Schnürer</title>
         <meta name="description" content={description}>
-	    <ViewTransitions />
     </head>
-	<body class="margin-0" transition:animate="none">
-        <header>
+	<body class="margin-0">
+        <header class="padding-50 margin-100">
             <container-text class="margin-inline-auto">
-                <nav class="padding-50 flex align-items-center justify-content-flex-end gap-25">
+                <nav class="padding-50 flex align-items-center justify-content-flex-end gap-100">
                     <a href="/">Home</a>
                     {/*
                         <a href="/dev">Dev stuff</a>
@@ -42,18 +40,19 @@ const { title, description } = Astro.props;
 </html>
 
 <style>
-    a {
-        text-decoration: none;
-        color: black;
-        font-weight: 500;
-        padding-block: .25rem;
-        padding-inline: 1rem;
+    header {
+        backdrop-filter: blur(1px);
         border-radius: .25rem;
-        transition: background-color .2s ease;
+        background-color: rgba(102,168,122, .5);
+        box-shadow: 0 0 .5rem -.25rem rgba(102,168,122);
+        position: sticky;
+        top: .5rem;
     }
 
-    a:hover {
-        background-color: #e0e6eb;
+    header * {
+        color: black;
+        font-weight: 500;
+        text-decoration: none
     }
 
 </style>

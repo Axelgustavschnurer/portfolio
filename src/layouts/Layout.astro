@@ -33,6 +33,18 @@ const { title, description } = Astro.props;
             </container>
         </header>
         <slot></slot>
+        <footer>
+            <container class="margin-inline-auto padding-100 flex gap-100 justify-content-space-between">
+                <section>
+                    <a href="https://github.com/Axelgustavschnurer" target="_blank">Github</a>
+                    <a href="https://www.linkedin.com/in/axel-schn%C3%BCrer/" target="_blank">LinkedIn</a>
+                </section>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/Blog">Blog</a>
+                </nav>
+            </container>
+        </footer>
 	</body>
 </html>
 
@@ -54,5 +66,13 @@ const { title, description } = Astro.props;
         background-color: rgba(102,168,122, .5);
         box-shadow: 0 0 .5rem -.25rem rgba(102,168,122);
     }
+
+    footer > container {
+        backdrop-filter: blur(1px);
+        border-radius: .25rem .25rem 0 0;
+        background-color: rgba(102,168,122, .5);
+        box-shadow: 0 0 .5rem -.25rem rgba(102,168,122);
+    }
+
 
 </style>

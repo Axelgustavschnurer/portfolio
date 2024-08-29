@@ -23,7 +23,7 @@ const { title, description } = Astro.props;
 	<body class="margin-0">
         <header class="margin-50">
             <container class="margin-inline-auto padding-50">
-                <flex class="align-items-center justify-content-space-between margin-inline-200">
+                <flex class="align-items-center justify-content-space-between">
                     <img src="/icons/dog.svg" alt="" />
                     <nav class="flex align-items-center gap-100">
                         <a href="/">Home</a>
@@ -54,6 +54,7 @@ const { title, description } = Astro.props;
     header {
         position: sticky;
         top: .5rem;
+        z-index: 9999;
     }
 
     header * {
@@ -63,7 +64,7 @@ const { title, description } = Astro.props;
     }
 
     header > container {
-        backdrop-filter: blur(1px);
+        backdrop-filter: blur(2px);
         border-radius: .25rem;
         background-color: rgba(102,168,122, .5);
         box-shadow: 0 0 .5rem -.25rem rgba(102,168,122);
@@ -78,10 +79,10 @@ const { title, description } = Astro.props;
 
     .cta {
         padding: .5rem;
-        background: linear-gradient(-45deg, #a86694, #c293b4);
-        box-shadow: 1px 1px 0 #a86694;
+        background:#c293b4;
+        box-shadow: 3px 3px 0 -1px #a86694;
         transition: box-shadow .1s ease-out;
-        border-radius: .25rem;
+        border-radius: 2px;
     }
 
     .cta:active {

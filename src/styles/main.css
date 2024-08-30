@@ -1,7 +1,7 @@
 /* TODO: Figure out specificity (User :where() psuedo element? See input[type="file"]) */
 
 body {
-  background-color: hsl(138, 28%, 95%);
+  background-color: hsl(138, 28%, 96%);
 }
 
 img {
@@ -66,8 +66,8 @@ input[type=month],
 input[type=time],
 input[type=week],
 textarea):focus {
-  outline: 2px solid #0075FF;
-  box-shadow: 0 0 0.5rem -3px #0075FF;
+  outline: 2px solid #c293b4;
+  box-shadow: 0 0 0.5rem -3px #c293b4;
   background-color: transparent;
 }
 
@@ -88,8 +88,8 @@ input[type=image]) {
 input[type=reset],
 input[type=submit],
 input[type=image]):focus {
-  outline: 2px solid #0075FF;
-  box-shadow: 0 0 0.5rem -3px #0075FF;
+  outline: 2px solid #c293b4;
+  box-shadow: 0 0 0.5rem -3px #c293b4;
 }
 :where(input[type=button],
 input[type=reset],
@@ -118,11 +118,11 @@ input[type=file]::file-selector-button { /* TODO: :where() for pseudo elements n
 }
 
 :where(input[type=file]:focus) {
-  border: 2px dashed #0075FF;
+  border: 2px dashed #c293b4;
 }
 
 input[type=file]:focus::file-selector-button { /* TODO: :where() for pseudo elements not supported? */
-  background-color: #0075FF;
+  background-color: #c293b4;
   color: white;
 }
 

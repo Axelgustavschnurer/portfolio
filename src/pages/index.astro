@@ -41,18 +41,21 @@ schools.forEach((school: any) => {
 				</article>
 			</container>
 		</section>
-		<section class="margin-block-500 padding-block-100 padding-inline-50">
+		<section class="margin-block-300 padding-block-100 padding-inline-50">
 			<container-text class="margin-inline-auto">
+				<h2 style="text-align: center;">Projects</h2>
 				<flex class="justify-content-space-between gap-100 flex-wrap-wrap"> {/* TODO: Use grid here */}
 					{projects.map((project: any) =>
-						<div class="flex-grow-100 padding-50" style="box-shadow: 0 0 .5rem -.25rem rgba(102,168,122); border-radius: .5rem; max-width: 28ch;">
-							<flex class="justify-content-center">
-								<img src={`https://schnurer.pockethost.io/api/files/${project.collectionId}/${project.id}/${project.banner}`} alt="" style="height: 100px; max-width: 100%; border-radius: .25rem; " />
-							</flex>
-							<h2 class="margin-block-100" style="text-transform: capitalize; text-align: center; font-weight: 500;">{project.title}</h2>
-							<div set:html={project.description} class="text margin-block-100"></div>
-							<a href="" class="block padding-25 temp-class" style="color: white; background-color: #292929; text-decoration: none; text-align: center; border-radius: .25rem;">Read more</a>
-						</div>	
+					    project.showcase && (
+							<div class="flex-grow-100 padding-50" style="box-shadow: 0 0 .5rem -.25rem rgba(102,168,122); border-radius: .5rem; max-width: 28ch;">
+								<flex class="justify-content-center">
+									<img src={`https://schnurer.pockethost.io/api/files/${project.collectionId}/${project.id}/${project.banner}`} alt="" style="height: 100px; max-width: 100%; border-radius: .25rem; " />
+								</flex>
+								<h2 class="margin-block-100" style="text-transform: capitalize; text-align: center; font-weight: 500;">{project.title}</h2>
+								<div set:html={project.description} class="text margin-block-100"></div>
+								<a href="" class="block padding-25 temp-class" style="color: white; background-color: #292929; text-decoration: none; text-align: center; border-radius: .25rem;">Read more</a>
+							</div>	
+						)
 					)}
 				</flex>
 				<flex class="justify-content-center margin-block-200">
@@ -60,12 +63,17 @@ schools.forEach((school: any) => {
 				</flex>
 			</container-text>
 		</section>
-		<section class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 70%);">
+		<section class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 85%);">
 			<container class="margin-inline-auto">
-				<h2 class="margin-0">Work experience</h2>
+				<h2 class="margin-0">About me</h2>
 			</container>
 		</section>
-		<section class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 80%);">
+		<section class="padding-inline-50 padding-block-300 margin-block-500">
+			<container-text class="margin-inline-auto">
+				<h2 class="margin-0">Work experience</h2>
+			</container-text>
+		</section>
+		<section class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 85%);">
 			<container class="margin-inline-auto">
 				<h2 class="margin-0">Education</h2>
 				<h3>Courses</h3>
@@ -110,7 +118,7 @@ schools.forEach((school: any) => {
 							<button type="submit" class="cta">Submit</button>
 						</form>
 					</section>
-					<img width="400" height="300" src="" style="border-radius: .25rem;" />
+					<img width="400" height="400" src="https://images.unsplash.com/photo-1724770646663-2a806ed04ca4?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="border-radius: .25rem; object-fit: cover;" />
 				</flex>
 			</container>
 		</section>

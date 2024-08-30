@@ -7,9 +7,15 @@ const projects = await pbFetch({
 	sort: 'updated'
 })
 
-console.log(projects[2].collectionId)
-console.log(projects[2].id)
-console.log(projects[2].banner)
+const education = await pbFetch({
+	collection: 'courses',
+	sort: '-start_date'
+})
+
+const schools = await pbFetch({
+	collection: 'schools',
+	sort: 'name'
+})
 
 ---
 
@@ -58,33 +64,21 @@ console.log(projects[2].banner)
 					<label>
 						Sort by: 
 						<select>
-							<option>School</option>
 							<option>Date</option>
+							<option>School</option>
 							<option>Subject</option>
 							<option>Credits</option>
 						</select>
 					</label>
 				</flex>
-				<h3>Linköping university</h3>
-				<ul>
-					<li>Hållbar utveckling i den globala kontext, 15hp</li>
-				</ul>
-				<h3>Lund university</h3>
-				<ul>
-					<li>Biologi: Floristik - fortsättningskurs, 7.5hp</li>
-					<li>Biologi: Fältfaunistik, 7.5hp</li>
-				</ul>
-				<h3>Swedish University of Agricultural Sciences</h3>
-				<ul>
-					<li>Grundläggande floristik och leddjursfaunistik i ett växtskydds- och naturvårdsperspektiv, 7.5hp</li>
-					<li>Ekologi och miljövetenskap, 7.5hp</li>
-					<li>Fältkurs i växtproduktion, 7.5hp</li>
-				</ul>
-				<h3>Uppsala university</h3>
-				<ul>
-					<li>Programmeringsteknik I,5hp</li>
-					<li>Naturvård och biologisk mångfald, 10hp</li>
-				</ul>
+				{education.map((course: any) =>
+					<article class="margin-block-100">
+						<small style="color: #494949;">{course.code}</small>
+						<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>
+						<small>{new Date(course.start_date).toISOString().split('T')[0]} - {new Date(course.end_date).toISOString().split('T')[0]}</small> <br/>
+						<small>{course.credits} credits</small>
+					</article>
+				)}
 			</container-text>
 		</section>
 		<section class="padding-inline-50 padding-block-300">

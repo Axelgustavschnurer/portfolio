@@ -60,12 +60,12 @@ schools.forEach((school: any) => {
 				</flex>
 			</container-text>
 		</section>
-		<section class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 80%);">
+		<section class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 70%);">
 			<container class="margin-inline-auto">
 				<h2 class="margin-0">Work experience</h2>
 			</container>
 		</section>
-		<section class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 70%);">
+		<section class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 80%);">
 			<container class="margin-inline-auto">
 				<h2 class="margin-0">Education</h2>
 				<h3>Courses</h3>
@@ -89,9 +89,29 @@ schools.forEach((school: any) => {
 				)}
 			</container>
 		</section>
-		<section class="padding-inline-50 padding-block-300">
-			<container class="margin-inline-auto">
-				<h2>Contact</h2>
+		<section class="padding-inline-50 padding-block-300 margin-block-500">
+			<container class="margin-inline-auto" id="contact">
+				<flex class="justify-content-space-between align-items-center gap-100 flex-wrap-wrap-reverse">
+					<section style="width: min(70ch, 100%);">
+						<h2>Contact</h2>
+						<form>
+							<label class="block margin-block-75">
+								Full name
+								<input type="text" class="margin-block-25" />
+							</label>
+							<label class="block margin-block-75">
+								Email
+								<input type="email" class="margin-block-25" />
+							</label>
+							<label class="block margin-block-75">
+								Message
+								<textarea class="margin-block-25"></textarea>
+							</label>
+							<button type="submit" class="cta">Submit</button>
+						</form>
+					</section>
+					<img width="400" height="300" src="" style="border-radius: .25rem;" />
+				</flex>
 			</container>
 		</section>
 	</main>
@@ -139,6 +159,24 @@ schools.forEach((school: any) => {
 
 	.temp-class:hover {
 		background-color: #a86694 !important;
+	}
+
+    .cta {
+        padding: .5rem;
+        background-color: #c293b4;
+        box-shadow: 3px 3px 0 -1px #a86694;
+        transition: box-shadow .1s ease-out, background-color .2s ease;
+        border-radius: 2px;
+		font-weight: 500;
+    }
+
+    .cta:active {
+        box-shadow: none !important;
+    }
+
+	.cta:hover {
+		background-color: #e0acd1;
+        box-shadow: 3px 3px 0 -1px #c293b4;
 	}
 
 </style>

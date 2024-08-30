@@ -17,6 +17,14 @@ const schools = await pbFetch({
 	sort: 'name'
 })
 
+schools.forEach((school: any) => {
+	education.forEach((course: any) => {
+		if (school.id == course.school) {
+			course.school = school
+		}
+	});
+});
+
 ---
 
 <Layout 
@@ -58,28 +66,28 @@ const schools = await pbFetch({
 			</container>
 		</section>
 		<section class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 70%);">
-			<container-text class="margin-inline-auto">
-				<flex class="justify-content-space-between gap-100 flex-wrap-wrap">
-					<h2 class="margin-0">Education</h2>
-					<label>
-						Sort by: 
-						<select>
-							<option>Date</option>
-							<option>School</option>
-							<option>Subject</option>
-							<option>Credits</option>
-						</select>
-					</label>
-				</flex>
+			<container class="margin-inline-auto">
+				<h2 class="margin-0">Education</h2>
+				<h3>Courses</h3>
 				{education.map((course: any) =>
 					<article class="margin-block-100">
-						<small style="color: #494949;">{course.code}</small>
-						<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>
-						<small>{new Date(course.start_date).toISOString().split('T')[0]} - {new Date(course.end_date).toISOString().split('T')[0]}</small> <br/>
-						<small>{course.credits} credits</small>
+						<flex class="justify-content-space-between align-items-center">
+							<flex class="align-items-center gap-100">
+								<img src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain; border-radius: 3px;" />
+								<section>	
+									<small style="color: #494949;">{course.code}</small> <br/>
+									<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>
+									<small>{course.school.name} • {course.credits} credits</small>
+								</section>
+							</flex>
+							<div style="text-align: right;">
+								<time><span style="font-weight: 500;">Ended:</span> {new Date(course.end_date).toISOString().split('T')[0]}</time> <br />
+								<time><span style="font-weight: 500;">Started:</span> {new Date(course.start_date).toISOString().split('T')[0]}</time>	
+							</div>
+						</flex>
 					</article>
 				)}
-			</container-text>
+			</container>
 		</section>
 		<section class="padding-inline-50 padding-block-300">
 			<container class="margin-inline-auto">

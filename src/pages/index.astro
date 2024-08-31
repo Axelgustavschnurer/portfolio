@@ -41,9 +41,9 @@ schools.forEach((school: any) => {
 				</article>
 			</container>
 		</section>
-		<section class="margin-block-300 padding-block-100 padding-inline-50">
+		<section class="padding-block-300 padding-inline-50">
 			<container-text class="margin-inline-auto">
-				<h2 style="text-align: center;">Projects</h2>
+				<h2 class="margin-block-200" style="text-align: center">Some of my projects</h2>
 				<flex class="justify-content-space-between gap-100 flex-wrap-wrap"> {/* TODO: Use grid here */}
 					{projects.map((project: any) =>
 					    project.showcase && (
@@ -165,8 +165,14 @@ schools.forEach((school: any) => {
 		-webkit-box-orient: vertical;
 	}
 
+	.temp-class {
+		transition: background-color .2s ease, box-shadow .2s ease;
+	}
+
 	.temp-class:hover {
 		background-color: #a86694 !important;
+		box-shadow: 0 0 .5rem -3px #a86694;
+
 	}
 
     .cta {

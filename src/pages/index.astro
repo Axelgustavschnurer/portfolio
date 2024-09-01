@@ -32,6 +32,7 @@ schools.forEach((school: any) => {
 	description="Välkommen till min portfolio"
 >
 	<main>
+		
 		<section class="padding-inline-50">
 			<container class="margin-inline-auto" style="position: relative; height: 312px;">
 				<box></box>
@@ -41,13 +42,14 @@ schools.forEach((school: any) => {
 				</article>
 			</container>
 		</section>
+
 		<section class="padding-block-300 padding-inline-50">
 			<container-text class="margin-inline-auto">
 				<h2 class="margin-block-200" style="text-align: center">Some of my projects</h2>
-				<flex class="justify-content-space-between gap-100 flex-wrap-wrap"> {/* TODO: Use grid here */}
+				<grid class="grid-projects-layout gap-100"> 
 					{projects.map((project: any) =>
 					    project.showcase && (
-							<div class="flex-grow-100 padding-50" style="box-shadow: 0 0 .5rem -.25rem rgba(102,168,122); border-radius: .5rem; max-width: 28ch;">
+							<div class="flex-grow-100 padding-50" style="box-shadow: 0 0 .5rem -.25rem rgba(102,168,122); border-radius: .5rem;">
 								<flex class="justify-content-center">
 									<img src={`https://schnurer.pockethost.io/api/files/${project.collectionId}/${project.id}/${project.banner}`} alt="" style="height: 100px; max-width: 100%; border-radius: .25rem; " />
 								</flex>
@@ -57,22 +59,25 @@ schools.forEach((school: any) => {
 							</div>	
 						)
 					)}
-				</flex>
+				</grid>
 				<flex class="justify-content-center margin-block-200">
 					<a href="">View all projects</a> 
 				</flex>
 			</container-text>
 		</section>
+
 		<section class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 85%);">
 			<container class="margin-inline-auto">
 				<h2 class="margin-0">About me</h2>
 			</container>
 		</section>
+		
 		<section class="padding-inline-50 padding-block-300 margin-block-500">
 			<container-text class="margin-inline-auto">
 				<h2 class="margin-0">Work experience</h2>
 			</container-text>
 		</section>
+		
 		<section class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 85%);">
 			<container class="margin-inline-auto">
 				<h2 class="margin-0">Education</h2>
@@ -133,6 +138,10 @@ schools.forEach((school: any) => {
 
 	small {
 		font-size: 1rem;
+	}
+
+	.grid-projects-layout {
+		grid-template-columns: repeat(auto-fit,minmax(min(200px, 100%), 1fr));
 	}
 
 	box {

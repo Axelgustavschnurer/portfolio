@@ -55,7 +55,7 @@ schools.forEach((school: any) => {
 								</flex>
 								<h2 class="margin-block-100" style="text-transform: capitalize; text-align: center; font-weight: 500;">{project.title}</h2>
 								<div set:html={project.description} class="text margin-block-100"></div>
-								<a href="" class="block padding-25 temp-class" style="color: white; background-color: #292929; text-decoration: none; text-align: center; border-radius: .25rem;">Read more</a>
+								<a href={`/projects/${project.id}`} class="block padding-25 temp-class" style="color: white; background-color: #292929; text-decoration: none; text-align: center; border-radius: .25rem;">Read more</a>
 							</div>	
 						)
 					)}

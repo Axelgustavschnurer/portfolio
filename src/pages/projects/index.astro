@@ -1,5 +1,12 @@
 ---
-import Layout from "@layouts/Layout.astro";
+import Layout from "@layouts/Layout.astro"
+import { pbFetch } from "@functions";
+
+const projects = await pbFetch({
+    collection: "projects",
+    sort: 'title'
+});
+
 ---
 
 <Layout 
@@ -8,6 +15,9 @@ import Layout from "@layouts/Layout.astro";
 >
     <container class="margin-inline-auto">
         <h1>Projects</h1>
+        {projects.map((project: any) =>
+            <a href={`/projects/${project.id}`} class="block margin-block-100">{project.title}</a>
+        )}
     <container>
 
 </Layout>

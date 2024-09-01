@@ -12,6 +12,11 @@ const education = await pbFetch({
 	sort: '-start_date'
 })
 
+let total_credits: number = 0
+education.forEach((course: any) => {
+	total_credits += course.credits
+});
+
 const schools = await pbFetch({
 	collection: 'schools',
 	sort: 'name'
@@ -51,7 +56,7 @@ schools.forEach((school: any) => {
 					    project.showcase && (
 							<div class="flex-grow-100 padding-50" style="box-shadow: 0 0 .5rem -.25rem rgba(102,168,122); border-radius: .5rem;">
 								<flex class="justify-content-center">
-									<img src={`https://schnurer.pockethost.io/api/files/${project.collectionId}/${project.id}/${project.banner}`} alt="" style="height: 100px; max-width: 100%; border-radius: .25rem; " />
+									<img src='' alt="" style="height: 100px; width: 100%; border-radius: .25rem; " />
 								</flex>
 								<h2 class="margin-block-100" style="text-transform: capitalize; text-align: center; font-weight: 500;">{project.title}</h2>
 								<div set:html={project.description} class="text margin-block-100"></div>
@@ -61,7 +66,7 @@ schools.forEach((school: any) => {
 					)}
 				</grid>
 				<flex class="justify-content-center margin-block-200">
-					<a href="">View all projects</a> 
+					<a href="/projects">View all projects</a> 
 				</flex>
 			</container-text>
 		</section>
@@ -78,33 +83,63 @@ schools.forEach((school: any) => {
 			</container-text>
 		</section>
 		
-		<section class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 85%);">
+		<section id="education" class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 85%);">
 			<container class="margin-inline-auto">
 				<h2 class="margin-0">Education</h2>
-				<h3>Courses</h3>
-				{education.map((course: any) =>
-					<article class="margin-block-100">
-						<flex class="justify-content-space-between align-items-center">
-							<flex class="align-items-center gap-100">
-								<img src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain; border-radius: 3px;" />
-								<section>	
-									<small style="color: #494949;">{course.code}</small> <br/>
-									<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>
-									<small>{course.school.name} • {course.credits} credits</small>
-								</section>
+				<flex class="justify-content-space-between align-items-center gap-100 flex-wrap-wrap">
+					<h3>Courses</h3>
+					<small style="font-weight: 500;">Total credits: {total_credits}</small>
+				</flex>
+				{education.map((course: any, index: number) =>
+					index < 5 ? (
+						<article class="margin-block-100">
+							<flex class="justify-content-space-between align-items-center">
+								<flex class="align-items-center gap-100">
+									<img src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain; border-radius: 3px;" />
+									<section>	
+										<small style="color: #494949;">{course.code}</small> <br/>
+										<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>
+										<small>{course.school.name} • {course.credits} credits</small>
+									</section>
+								</flex>
+								<div style="text-align: right;">
+									<time><span style="font-weight: 500;">Ended:</span> {new Date(course.end_date).toISOString().split('T')[0]}</time> <br />
+									<time><span style="font-weight: 500;">Started:</span> {new Date(course.start_date).toISOString().split('T')[0]}</time>	
+								</div>
 							</flex>
-							<div style="text-align: right;">
-								<time><span style="font-weight: 500;">Ended:</span> {new Date(course.end_date).toISOString().split('T')[0]}</time> <br />
-								<time><span style="font-weight: 500;">Started:</span> {new Date(course.start_date).toISOString().split('T')[0]}</time>	
-							</div>
-						</flex>
-					</article>
+						</article>
+					) : index >= 5 ? (
+						<article class="margin-block-100 older-course">
+							<flex class="justify-content-space-between align-items-center">
+								<flex class="align-items-center gap-100">
+									<img src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain; border-radius: 3px;" />
+									<section>	
+										<small style="color: #494949;">{course.code}</small> <br/>
+										<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>
+										<small>{course.school.name} • {course.credits} credits</small>
+									</section>
+								</flex>
+								<div style="text-align: right;">
+									<time><span style="font-weight: 500;">Ended:</span> {new Date(course.end_date).toISOString().split('T')[0]}</time> <br />
+									<time><span style="font-weight: 500;">Started:</span> {new Date(course.start_date).toISOString().split('T')[0]}</time>	
+								</div>
+							</flex>
+						</article>
+					) : null
+
 				)}
+				<flex class="justify-content-center margin-top-200">
+					<label>
+						View all courses {/* TODO: Use ::after or somn to change this text with toggle state */}
+						<input type="checkbox" />
+					</label> 
+				</flex>
 			</container>
 		</section>
+
 		<section class="padding-inline-50 padding-block-300 margin-block-500">
 			<container class="margin-inline-auto" id="contact">
-				<flex class="justify-content-space-between align-items-center gap-100 flex-wrap-wrap-reverse">
+				<flex class="justify-content-space-between align-items-center gap-100" style="">
 					<section style="width: min(70ch, 100%);">
 						<h2>Contact</h2>
 						<form>
@@ -127,10 +162,40 @@ schools.forEach((school: any) => {
 				</flex>
 			</container>
 		</section>
+
+		
 	</main>
 </Layout>
 
 <style>
+
+	.older-course {
+		display: none;
+	}
+
+	#education:has(input[type="checkbox"]:checked) .older-course {
+		display: block;
+	}
+
+	#education input[type="checkbox"] {
+		position: absolute;
+		opacity: 0;
+	}
+
+	#education label {
+		font-weight: 500;
+		padding: .5rem;
+		border-radius: .25rem;
+		transition: background-color .2s ease;
+	}
+	
+	#education label:hover {
+		background-color: #c293b4;
+	}
+
+	#education label:active {
+		scale: .95;
+	}
 
 	h1 {
 		font-size: 3rem;

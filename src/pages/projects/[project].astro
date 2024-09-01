@@ -1,0 +1,46 @@
+---
+
+import Layout from "@layouts/Layout.astro";
+import { pbFetch } from "@functions";
+
+const { project } = Astro.params;
+export async function getStaticPaths() {
+    
+    const data = await pbFetch({
+        collection: "projects",
+        sort: "title"
+    });
+
+    let params: Array<{
+        params: {
+            project: string;
+        };
+    }> = [];
+
+    data.forEach((element: any) => {
+        params.push({ params: { project: element.id } });
+    });
+    
+    return params;
+}
+
+const data = await pbFetch({
+    collection: "projects",
+    id: project
+});
+---
+
+<Layout 
+	title="Projects"
+	description="My projects"
+>
+    <container class="margin-inline-auto">
+        <container-text>
+            <h1>{data.title}</h1>
+            <div set:html={data.description} class="margin-block-100"></div>
+        </container-text>
+    <container>
+
+</Layout>
+
+

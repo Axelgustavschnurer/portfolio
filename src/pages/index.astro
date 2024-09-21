@@ -41,10 +41,10 @@ schools.forEach((school: any) => {
 		<section class="padding-inline-50">
 			<container class="margin-inline-auto" style="position: relative; height: 312px;">
 				<box></box>
-				<article class="margin-inline-300">
+				<block class="margin-inline-300">
 					<h1 class="margin-bottom-0 margin-top-200 padding-top-100">Axel Schnürer</h1>
 					<small>Frontend develeoper</small> <br />
-				</article>
+				</block>
 			</container>
 		</section>
 
@@ -78,9 +78,9 @@ schools.forEach((school: any) => {
 		</section>
 		
 		<section class="padding-inline-50 padding-block-300 margin-block-500">
-			<container-text class="margin-inline-auto">
+			<container class="margin-inline-auto">
 				<h2 class="margin-0">Work experience</h2>
-			</container-text>
+			</container>
 		</section>
 		
 		<section id="education" class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 85%);">
@@ -90,76 +90,44 @@ schools.forEach((school: any) => {
 					<h3>Courses</h3>
 					<small style="font-weight: 500;">Total credits: {total_credits}</small>
 				</flex>
-				{education.map((course: any, index: number) =>
-					index < 5 ? (
+				<section>
+					{education.map((course: any) =>
 						<article class="margin-block-100">
-							<flex class="justify-content-space-between align-items-center">
-								<flex class="align-items-center gap-100">
-									<img src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain; border-radius: 3px;" />
-									<section>	
-										<small style="color: #494949;">{course.code}</small> <br/>
-										<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>
-										<small>{course.school.name} • {course.credits} credits</small>
-									</section>
-								</flex>
-								<div style="text-align: right;">
-									<time><span style="font-weight: 500;">Ended:</span> {new Date(course.end_date).toISOString().split('T')[0]}</time> <br />
-									<time><span style="font-weight: 500;">Started:</span> {new Date(course.start_date).toISOString().split('T')[0]}</time>	
-								</div>
+							<flex class="align-items-center gap-100">
+								<img src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain; border-radius: 3px;" />
+								<section>	
+									<small style="color: #494949;">{course.code}</small> <br/>
+									<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>
+									<small>{course.school.name} • {course.credits} credits</small>
+								</section>
 							</flex>
+							<time>{new Date(course.start_date).toISOString().split('T')[0]}</time>	
 						</article>
-					) : index >= 5 ? (
-						<article class="margin-block-100 older-course">
-							<flex class="justify-content-space-between align-items-center">
-								<flex class="align-items-center gap-100">
-									<img src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain; border-radius: 3px;" />
-									<section>	
-										<small style="color: #494949;">{course.code}</small> <br/>
-										<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>
-										<small>{course.school.name} • {course.credits} credits</small>
-									</section>
-								</flex>
-								<div style="text-align: right;">
-									<time><span style="font-weight: 500;">Ended:</span> {new Date(course.end_date).toISOString().split('T')[0]}</time> <br />
-									<time><span style="font-weight: 500;">Started:</span> {new Date(course.start_date).toISOString().split('T')[0]}</time>	
-								</div>
-							</flex>
-						</article>
-					) : null
-
-				)}
-				<flex class="justify-content-center margin-top-200">
-					<label>
-						View all courses {/* TODO: Use ::after or somn to change this text with toggle state */}
-						<input type="checkbox" />
-					</label> 
-				</flex>
+					)}
+				</section>
 			</container>
 		</section>
 
-		<section class="padding-inline-50 padding-block-300 margin-block-500">
-			<container class="margin-inline-auto" id="contact">
-				<flex class="justify-content-space-between align-items-center gap-100" style="flex-wrap: wrap-reverse;">
-					<section style="width: min(70ch, 100%);">
-						<h2>Contact</h2>
-						<form>
-							<label class="block margin-block-75">
-								Full name
-								<input type="text" class="margin-block-25" />
-							</label>
-							<label class="block margin-block-75">
-								Email
-								<input type="email" class="margin-block-25" />
-							</label>
-							<label class="block margin-block-75">
-								Message
-								<textarea class="margin-block-25"></textarea>
-							</label>
-							<button type="submit" class="cta">Submit</button>
-						</form>
-					</section>
-					<img width="400" height="400" src="https://images.unsplash.com/photo-1724770646663-2a806ed04ca4?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="border-radius: .25rem; object-fit: cover;" />
-				</flex>
+		<section class="padding-inline-50 padding-block-300 margin-block-500" id="contact">
+			<container class="margin-inline-auto">
+				<div style="width: min(65ch, 100%);">
+					<h2>Contact</h2>
+					<form>
+						<label class="block margin-block-75">
+							Full name
+							<input type="text" class="margin-block-25" />
+						</label>
+						<label class="block margin-block-75">
+							Email
+							<input type="email" class="margin-block-25" />
+						</label>
+						<label class="block margin-block-75">
+							Message
+							<textarea class="margin-block-25"></textarea>
+						</label>
+						<button type="submit" class="cta">Submit</button>
+					</form>
+				</div>
 			</container>
 		</section>
 
@@ -169,33 +137,6 @@ schools.forEach((school: any) => {
 
 <style>
 
-	.older-course {
-		display: none;
-	}
-
-	#education:has(input[type="checkbox"]:checked) .older-course {
-		display: block;
-	}
-
-	#education input[type="checkbox"] {
-		position: absolute;
-		opacity: 0;
-	}
-
-	#education label {
-		font-weight: 500;
-		padding: .5rem;
-		border-radius: .25rem;
-		transition: background-color .2s ease;
-	}
-	
-	#education label:hover {
-		background-color: #c293b4;
-	}
-
-	#education label:active {
-		scale: .95;
-	}
 
 	h1 {
 		font-size: 3rem;
@@ -222,14 +163,6 @@ schools.forEach((school: any) => {
 		z-index: -1;
 		box-shadow: 0 0 .5rem -.25rem rgba(102,168,122);
 	} 
-
-	box-temp {
-		flex-grow: 1;
-		height: 200px;
-		border-radius: .25rem;
-		background-color: rgba(102,168,122);
-	}
-
 
 	.text {
 		overflow: hidden;

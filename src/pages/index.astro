@@ -2,6 +2,13 @@
 import Layout from "@layouts/Layout.astro";
 import { pbFetch } from "@functions";
 
+const options: Intl.DateTimeFormatOptions = { 
+	weekday: undefined, 
+	year: undefined, 
+	month: 'long', 
+	day: 'numeric',
+};
+
 const projects = await pbFetch({
 	collection: 'projects',
 	sort: 'updated'
@@ -90,19 +97,19 @@ schools.forEach((school: any) => {
 					<h3>Courses</h3>
 					<small style="font-weight: 500;">Total credits: {total_credits}</small>
 				</flex>
-				<section>
+				<section class="grid align-items-center education-layout">
 					{education.map((course: any) =>
-						<article class="margin-block-100">
-							<flex class="align-items-center gap-100">
-								<img src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain; border-radius: 3px;" />
-								<section>	
-									<small style="color: #494949;">{course.code}</small> <br/>
-									<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>
-									<small>{course.school.name} • {course.credits} credits</small>
-								</section>
-							</flex>
-							<time>{new Date(course.start_date).toISOString().split('T')[0]}</time>	
-						</article>
+						// Would like theese to be an article, how?
+						<time style="text-align: right;" datetime={course.end_date}>{new Date(course.start_date).toLocaleDateString("en-GB", options)}</time>
+						<img src="/icons/point.svg" alt="" />
+						<flex class="align-items-center gap-100 margin-inline-100">
+							<img src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain; border-radius: 3px;" />
+							<section>	
+								<small style="color: #494949;">{course.code}</small> <br/>
+								<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>
+								<small>{course.school.name} • {course.credits} credits</small>
+							</section>
+						</flex>
 					)}
 				</section>
 			</container>
@@ -198,6 +205,12 @@ schools.forEach((school: any) => {
 	.cta:hover {
 		background-color: #e0acd1;
         box-shadow: 3px 3px 0 -1px #c293b4;
+	}
+	
+	.education-layout {
+		grid-template-columns: auto auto 1fr;
+		column-gap: .5rem;
+		row-gap: 1rem;
 	}
 
 </style>

@@ -19,10 +19,20 @@ const education = await pbFetch({
 	sort: '-start_date'
 })
 
+
 let total_credits: number = 0
+let course_by_year: any = {}
 education.forEach((course: any) => {
 	total_credits += course.credits
+	
+	const year = new Date(course.start_date).getFullYear();
+	if (!course_by_year[year]) {
+		course_by_year[year] = [];
+	}
+	course_by_year[year].push(course);
 });
+
+const temp = Object.keys(course_by_year).reverse() as string[]
 
 const schools = await pbFetch({
 	collection: 'schools',
@@ -93,28 +103,40 @@ schools.forEach((school: any) => {
 		<section id="education" class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 85%);">
 			<container class="margin-inline-auto">
 				<h2 class="margin-0">Education</h2>
+			</container>
+			<container-text class="margin-inline-auto">
 				<flex class="justify-content-space-between align-items-center gap-100 flex-wrap-wrap">
 					<h3>Courses</h3>
 					<small style="font-weight: 500;">Total credits: {total_credits}</small>
 				</flex>
 				<section class="grid align-items-center education-layout">
-					{education.map((course: any) =>
-						// Would like theese to be an article, how?
-						<time style="text-align: right;" datetime={course.end_date}>
-							<span>{new Date(course.start_date).toLocaleDateString("en-GB", options)}</span>
-						</time>
-						<img src="/icons/point.svg" alt="" style="transform: translateX(calc(-50% - 1px));" />
-						<flex class="align-items-center gap-100 padding-block-50">
-							<img src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain; border-radius: 3px;" />
-							<section>	
-								<small style="color: #494949;">{course.code}</small> <br/>
-								<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>
-								<small>{course.school.name} • {course.credits} credits</small>
-							</section>
-						</flex>
+					{temp.map((year: any, index: number) =>
+						<time datetime={year}></time>
+						<>
+							{index == 0 ? (
+								<img src="/icons/point.svg" alt="" style="transform: translateX(calc(-50% - 1px));" />
+							) : <div></div> }
+						</>
+						<h3>{year}</h3>
+						<>
+							{course_by_year[year].map((course: any) =>
+								<time style="text-align: right;" datetime={course.start_date}>
+									<span>{new Date(course.start_date).toLocaleDateString("en-GB", options)}</span>
+								</time>
+								<img src="/icons/point.svg" alt="" style="transform: translateX(calc(-50% - 1px));" />
+								<article class="flex align-items-center gap-100 padding-block-50">
+									<img src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain; border-radius: 3px;" />
+									<section>	
+										<small style="color: #494949;">{course.code}</small> <br/>
+										<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>
+										<small>{course.school.name} • {course.credits} credits</small>
+									</section>
+								</article>
+							)}
+						</>
 					)}
 				</section>
-			</container>
+			</container-text>
 		</section>
 
 		<section class="padding-inline-50 padding-block-300 margin-block-500" id="contact">
@@ -215,13 +237,8 @@ schools.forEach((school: any) => {
 	}
 
 	.education-layout > time:first-of-type {
-		align-items: flex-start;
 		height: 50%;
 		transform: translateY(50%);
-	}
-
-	.education-layout > time:first-of-type > span {
-		transform: translateY(-50%);
 	}
 
 	.education-layout > time:last-of-type {
@@ -242,5 +259,6 @@ schools.forEach((school: any) => {
 		border-right: 2px solid;
 		padding-right: 1rem;
 	}
+
 
 </style>

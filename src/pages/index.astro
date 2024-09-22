@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { pbFetch } from "@functions";
+import { Image } from 'astro:assets';
 
 const options: Intl.DateTimeFormatOptions = { 
 	weekday: undefined, 
@@ -125,7 +126,7 @@ schools.forEach((school: any) => {
 								</time>
 								<img src="/icons/point.svg" alt="" style="transform: translateX(calc(-50% - 1px));" />
 								<article class="flex align-items-center gap-100 padding-block-50">
-									<img src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain; border-radius: 3px;" />
+									<Image src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain;" />
 									<section>	
 										<small style="color: #494949;">{course.code}</small> <br/>
 										<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>

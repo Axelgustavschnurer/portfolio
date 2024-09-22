@@ -100,9 +100,11 @@ schools.forEach((school: any) => {
 				<section class="grid align-items-center education-layout">
 					{education.map((course: any) =>
 						// Would like theese to be an article, how?
-						<time style="text-align: right;" datetime={course.end_date}>{new Date(course.start_date).toLocaleDateString("en-GB", options)}</time>
-						<img src="/icons/point.svg" alt="" />
-						<flex class="align-items-center gap-100 margin-inline-100">
+						<time style="text-align: right;" datetime={course.end_date}>
+							<span>{new Date(course.start_date).toLocaleDateString("en-GB", options)}</span>
+						</time>
+						<img src="/icons/point.svg" alt="" style="transform: translateX(calc(-50% - 1px));" />
+						<flex class="align-items-center gap-100 padding-block-50">
 							<img src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain; border-radius: 3px;" />
 							<section>	
 								<small style="color: #494949;">{course.code}</small> <br/>
@@ -208,9 +210,37 @@ schools.forEach((school: any) => {
 	}
 	
 	.education-layout {
-		grid-template-columns: auto auto 1fr;
-		column-gap: .5rem;
-		row-gap: 1rem;
+		grid-template-columns: 120px 24px 1fr;
+		transform: translateX(calc(-120px - 24px));
+	}
+
+	.education-layout > time:first-of-type {
+		align-items: flex-start;
+		height: 50%;
+		transform: translateY(50%);
+	}
+
+	.education-layout > time:first-of-type > span {
+		transform: translateY(-50%);
+	}
+
+	.education-layout > time:last-of-type {
+		align-items: flex-end;
+		height: 50%;
+		transform: translateY(-50%);
+	}
+
+	.education-layout > time:last-of-type > span {
+		transform: translateY(50%);
+	}
+
+	time {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		border-right: 2px solid;
+		padding-right: 1rem;
 	}
 
 </style>

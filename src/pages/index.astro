@@ -79,21 +79,64 @@ const temp = Object.keys(course_by_year).reverse() as string[]
 		<section class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 85%);">
 			<container class="margin-inline-auto">
 				<h2 class="margin-0">About me</h2>
+				<p class="container-text" style="line-height: 1.5;">
+					I’m passionate about combining technology and sustainability to create impactful solutions. With a 
+					background in software development and environmental sciences, I bring together technical expertise and 
+					ecological knowledge to contribute to a more sustainable future.
+				</p>
+				<p class="container-text" style="line-height: 1.5;">
+					My professional focus is on building user-friendly, scalable platforms using modern frameworks like Next.js, 
+					Astro, and Svelte. I specialize in frontend and fullstack development, test automation, and CI/CD processes, 
+					ensuring that the solutions I develop not only meet technical standards but also align with climate goals 
+					and promote sustainable practices.
+				</p>
+				<p class="container-text" style="line-height: 1.5;">
+					In addition to my technical skills, my education in biology and ecology has provided me with a deep 
+					understanding of biodiversity, conservation, and sustainable development. Field courses in floristics, 
+					faunistics, and crop production have enhanced my ability to work hands-on with plant science, species 
+					identification, and habitat management.
+				</p>
+				<p class="container-text" style="line-height: 1.5;">
+					By integrating software development with a sustainability perspective, I aim to create tools and solutions 
+					that not only work efficiently but also drive meaningful change for a greener future.
+				</p>
+				<p>(ChatGPT placeholder ☝️)</p>
 			</container>
 		</section>
 		
 		<section class="padding-inline-50 padding-block-300 margin-block-500">
 			<container class="margin-inline-auto">
 				<h2 class="margin-0">Work experience</h2>
+				<p class="container-text" style="line-height: 1.5;">
+					Jag fokuserar på att kombinera teknik och hållbarhet genom innovativa mjukvarulösningar. 
+					Med erfarenhet av att utveckla användarvänliga och skalbara plattformar, använder jag moderna ramverk som Next.js, 
+					Astro och Svelte för att skapa verktyg som stödjer klimatmål och främjar återbruk.
+				</p>
+				<p class="container-text" style="line-height: 1.5;">
+					Min expertis omfattar frontend- och fullstackutveckling, testautomatisering och CI/CD-processer, 
+					där målet alltid är att leverera lösningar som bidrar till en mer hållbar framtid. Genom att förena teknisk 
+					skicklighet med ett hållbarhetsperspektiv skapar jag mjukvara som inte bara fungerar – utan gör skillnad.
+				</p>
+				<p>(ChatGPT placeholder ☝️)</p>
 			</container>
 		</section>
 		
 		<section id="education" class="padding-inline-50 padding-block-300" style="background-color: hsl(138, 28%, 85%);">
 			<container class="margin-inline-auto">
 				<h2 class="margin-0">Education</h2>
+				<p class="container-text" style="line-height: 1.5;">
+					My education combines a strong focus on biology, ecology, and environmental sciences with hands-on field 
+					experience and an interest in sustainability. I’ve studied topics like biodiversity, conservation, 
+					and ecosystem management, gaining practical skills through field courses in crop production, faunistics, and 
+					floristics. These experiences have deepened my understanding of plant science, species identification, and habitat management. 
+					Alongside this, I’ve explored global environmental challenges and sustainable development, equipping me with a broader 
+					perspective on conservation efforts. With additional technical skills in programming, I bring a well-rounded approach 
+					to ecological and environmental work.
+				</p>
+				<p>(ChatGPT placeholder ☝️)</p>
 			</container>
 			<container-text class="margin-inline-auto">
-				<flex class="justify-content-space-between align-items-center gap-100 flex-wrap-wrap">
+				<flex class="justify-content-space-between align-items-center gap-100 flex-wrap-wrap margin-block-300" style="border-bottom: 1px solid;">
 					<h3>Courses</h3>
 					<small style="font-weight: 500;">Total credits: {total_credits}</small>
 				</flex>
@@ -105,7 +148,7 @@ const temp = Object.keys(course_by_year).reverse() as string[]
 								<img src="/icons/point.svg" alt="" style="transform: translateX(calc(-50% - 1px));" />
 							) : <div></div> }
 						</>
-						<h3>{year}</h3>
+						<h3 class="margin-top-300">{year}</h3>
 						<>
 							{course_by_year[year].map((course: any) =>
 								<time style="text-align: right;" datetime={course.start_date}>
@@ -248,5 +291,8 @@ const temp = Object.keys(course_by_year).reverse() as string[]
 		padding-right: 1rem;
 	}
 
+	.education-layout h3:first-of-type {
+		margin-top: 1em !important;
+	}
 
 </style>

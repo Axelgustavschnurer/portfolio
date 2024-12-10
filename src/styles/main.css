@@ -1,13 +1,4 @@
 /* TODO: Figure out specificity (User :where() psuedo element? See input[type="file"]) */
-
-body {
-  background-color: hsl(138, 28%, 96%);
-}
-
-img {
-  max-width: 100%;
-}
-
 /* CSS reset */
 * {
   box-sizing: border-box;
@@ -44,8 +35,8 @@ input[type=date],
 input[type=datetime-local],
 input[type=month],
 input[type=time],
-input[type=week],
-textarea ) {
+input[type=week]),
+textarea {
   background-color: #e0e6eb;
   display: block;
   width: 100%;
@@ -66,8 +57,8 @@ input[type=month],
 input[type=time],
 input[type=week],
 textarea):focus {
-  outline: 2px solid #c293b4;
-  box-shadow: 0 0 0.5rem -3px #c293b4;
+  outline: 2px solid #0075FF;
+  box-shadow: 0 0 0.5rem -3px #0075FF;
   background-color: transparent;
 }
 
@@ -88,8 +79,8 @@ input[type=image]) {
 input[type=reset],
 input[type=submit],
 input[type=image]):focus {
-  outline: 2px solid #c293b4;
-  box-shadow: 0 0 0.5rem -3px #c293b4;
+  outline: 2px solid #0075FF;
+  box-shadow: 0 0 0.5rem -3px #0075FF;
 }
 :where(input[type=button],
 input[type=reset],
@@ -118,11 +109,11 @@ input[type=file]::file-selector-button { /* TODO: :where() for pseudo elements n
 }
 
 :where(input[type=file]:focus) {
-  border: 2px dashed #c293b4;
+  border: 2px dashed #0075FF;
 }
 
 input[type=file]:focus::file-selector-button { /* TODO: :where() for pseudo elements not supported? */
-  background-color: #c293b4;
+  background-color: #0075FF;
   color: white;
 }
 
@@ -1839,55 +1830,392 @@ container-text {
   flex-grow: unset;
 }
 
-/* Utility classes */
+.flex-wrap-nowrap {
+  flex-wrap: nowrap;
+}
+
 .flex-wrap-wrap {
   flex-wrap: wrap;
 }
 
-.align-items-flex-start {
-  align-items: flex-start;
+.flex-wrap-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+.flex-grow-inherit {
+  flex-wrap: inherit;
+}
+
+.flex-grow-initial {
+  flex-wrap: initial;
+}
+
+.flex-grow-revert {
+  flex-wrap: revert;
+}
+
+.flex-grow-revert-layer {
+  flex-wrap: revert-layer;
+}
+
+.flex-grow-unset {
+  flex-wrap: unset;
+}
+
+.align-items-normal {
+  align-items: normal;
+}
+
+.align-items-stretch {
+  align-items: stretch;
 }
 
 .align-items-center {
   align-items: center;
 }
 
+.align-items-start {
+  align-items: start;
+}
+
+.align-items-end {
+  align-items: end;
+}
+
+.align-items-flex-start {
+  align-items: flex-start;
+}
+
 .align-items-flex-end {
   align-items: flex-end;
 }
 
-.align-items-space-between {
-  align-items: space-between;
+.align-items-self-start {
+  align-items: self-start;
 }
 
-.align-items-space-evenly {
-  align-items: space-around;
+.align-items-self-end {
+  align-items: self-end;
 }
 
-.align-items-space-evenly {
-  align-items: space-evenly;
+.align-items-anchor-center {
+  align-items: anchor-center;
 }
 
-.justify-content-flex-start {
-  justify-content: flex-start;
+.align-items-baseline {
+  align-items: baseline;
+}
+
+.align-items-first-baseline {
+  align-items: first baseline;
+}
+
+.align-items-last-baseline {
+  align-items: last baseline;
+}
+
+.align-items-safe-center {
+  align-items: safe center;
+}
+
+.align-items-unsafe-center {
+  align-items: unsafe center;
+}
+
+.align-items-inherit {
+  align-items: inherit;
+}
+
+.align-items-initial {
+  align-items: initial;
+}
+
+.align-items-revert {
+  align-items: revert;
+}
+
+.align-items-revert-layer {
+  align-items: revert-layer;
+}
+
+.align-items-unset {
+  align-items: unset;
 }
 
 .justify-content-center {
   justify-content: center;
 }
 
+.justify-content-start {
+  justify-content: start;
+}
+
+.justify-content-end {
+  justify-content: end;
+}
+
+.justify-content-flex-start {
+  justify-content: flex-start;
+}
+
 .justify-content-flex-end {
   justify-content: flex-end;
+}
+
+.justify-content-left {
+  justify-content: left;
+}
+
+.justify-content-right {
+  justify-content: right;
+}
+
+.justify-content-normal {
+  justify-content: normal;
 }
 
 .justify-content-space-between {
   justify-content: space-between;
 }
 
-.justify-content-space-evenly {
+.justify-content-space-around {
   justify-content: space-around;
 }
 
 .justify-content-space-evenly {
   justify-content: space-evenly;
 }
+
+.justify-content-stretch {
+  justify-content: stretch;
+}
+
+.justify-content-safe-center {
+  justify-content: safe center;
+}
+
+.justify-content-unsafe-center {
+  justify-content: unsafe center;
+}
+
+.justify-content-inherit {
+  justify-content: inherit;
+}
+
+.justify-content-initial {
+  justify-content: initial;
+}
+
+.justify-content-revert {
+  justify-content: revert;
+}
+
+.justify-content-revert-layer {
+  justify-content: revert-layer;
+}
+
+.justify-content-unset {
+  justify-content: unset;
+}
+
+.cursor-auto {
+  cursor: auto;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-none {
+  cursor: none;
+}
+
+.cursor-context-menu {
+  cursor: context-menu;
+}
+
+.cursor-help {
+  cursor: help;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-progress {
+  cursor: progress;
+}
+
+.cursor-wait {
+  cursor: wait;
+}
+
+.cursor-cell {
+  cursor: cell;
+}
+
+.cursor-crosshair {
+  cursor: crosshair;
+}
+
+.cursor-text {
+  cursor: text;
+}
+
+.cursor-vertical-text {
+  cursor: vertical-text;
+}
+
+.cursor-alias {
+  cursor: alias;
+}
+
+.cursor-copy {
+  cursor: copy;
+}
+
+.cursor-move {
+  cursor: move;
+}
+
+.cursor-no-drop {
+  cursor: no-drop;
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+.cursor-grab {
+  cursor: grab;
+}
+
+.cursor-grabbing {
+  cursor: grabbing;
+}
+
+.cursor-e-resize {
+  cursor: e-resize;
+}
+
+.cursor-n-resize {
+  cursor: n-resize;
+}
+
+.cursor-nw-resize {
+  cursor: nw-resize;
+}
+
+.cursor-s-resize {
+  cursor: s-resize;
+}
+
+.cursor-se-resize {
+  cursor: se-resize;
+}
+
+.cursor-sw-resize {
+  cursor: sw-resize;
+}
+
+.cursor-w-resize {
+  cursor: w-resize;
+}
+
+.cursor-ew-resize {
+  cursor: ew-resize;
+}
+
+.cursor-ns-resize {
+  cursor: ns-resize;
+}
+
+.cursor-nesw-resize {
+  cursor: nesw-resize;
+}
+
+.cursor-nwse-resize {
+  cursor: nwse-resize;
+}
+
+.cursor-col-resize {
+  cursor: col-resize;
+}
+
+.cursor-row-resize {
+  cursor: row-resize;
+}
+
+.cursor-all-scroll {
+  cursor: all-scroll;
+}
+
+.cursor-zoom-in {
+  cursor: zoom-in;
+}
+
+.cursor-zoom-out {
+  cursor: zoom-out;
+}
+
+.cursor-inherit {
+  cursor: inherit;
+}
+
+.cursor-initial {
+  cursor: initial;
+}
+
+.cursor-revert {
+  cursor: revert;
+}
+
+.cursor-revert-layer {
+  cursor: revert-layer;
+}
+
+.cursor-unset {
+  cursor: unset;
+}
+
+.position-static {
+  position: static;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-fixed {
+  position: fixed;
+}
+
+.position-sticky {
+  position: sticky;
+}
+
+.position-inherit {
+  position: inherit;
+}
+
+.position-initial {
+  position: initial;
+}
+
+.position-revert {
+  position: revert;
+}
+
+.position-revert-layer {
+  position: revert-layer;
+}
+
+.position-unset {
+  position: unset;
+}
+
+/*# sourceMappingURL=main.css.map */

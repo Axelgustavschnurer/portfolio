@@ -17,9 +17,9 @@ const projects = await pbFetch({
 
 const education = await pbFetch({
 	collection: 'courses',
-	sort: '-start_date'
+	sort: '-start_date',
+	expand: 'school'
 })
-
 
 let total_credits: number = 0
 let course_by_year: any = {}
@@ -34,19 +34,6 @@ education.forEach((course: any) => {
 });
 
 const temp = Object.keys(course_by_year).reverse() as string[]
-
-const schools = await pbFetch({
-	collection: 'schools',
-	sort: 'name'
-})
-
-schools.forEach((school: any) => {
-	education.forEach((course: any) => {
-		if (school.id == course.school) {
-			course.school = school
-		}
-	});
-});
 
 ---
 
@@ -126,11 +113,11 @@ schools.forEach((school: any) => {
 								</time>
 								<img src="/icons/point.svg" alt="" style="transform: translateX(calc(-50% - 1px));" />
 								<article class="flex align-items-center gap-100 padding-block-50">
-									<Image src={`https://schnurer.pockethost.io/api/files/${course.school.collectionId}/${course.school.id}/${course.school.logo}`} alt="" width="48" height="48" style="object-fit: contain;" />
+									<Image src={`https://schnurer.pockethost.io/api/files/${course.expand.school.collectionId}/${course.expand.school.id}/${course.expand.school.logo}`} alt="" width="48" height="48" style="object-fit: contain;" />
 									<section>	
 										<small style="color: #494949;">{course.code}</small> <br/>
 										<h4 class="margin-0" style="max-width: 50ch;">{course.name}</h4>
-										<small>{course.school.name} • {course.credits} credits</small>
+										<small>{course.expand.school.name} • {course.credits} credits</small>
 									</section>
 								</article>
 							)}
